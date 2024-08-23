@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+// midtrans
+Route::post('/get-snap-token', [PaymentController::class, 'getSnapToken']);
+Route::get('/pay', function () {
+    return view('payment');
+});
+
+require __DIR__ . '/auth.php';
