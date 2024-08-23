@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('course_keypoints', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
