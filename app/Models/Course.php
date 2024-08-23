@@ -19,4 +19,29 @@ class Course extends Model
         'path_trailer',
         'thumbnail',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function mentor()
+    {
+        return $this->belongsTo(Mentor::class);
+    }
+
+    public function course_videos()
+    {
+        return $this->hasMany(CourseVideo::class);
+    }
+
+    public function course_keypoints()
+    {
+        return $this->hasMany(CourseKeypoint::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'course_students');
+    }
 }
