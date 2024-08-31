@@ -4,7 +4,7 @@
             <li class="text-sm">
                 Info@satuatapakademik.com | 0853552222338
             </li>
-            <li class="flex flex-row gap-5 md:gap-8">
+            <li class="flex flex-row gap-5 md:gap-8 items-center">
                 <a href="https://www.instagram.com/satuatap_akademik/" target="_blank" class="hover:text-base-red">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -31,7 +31,7 @@
             <img src="{{ url('/images/logo.png') }}" class="h-16" alt="Flowbite Logo" />
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <div class="hidden md:flex flex-row gap-5">
+            <div class="hidden md:flex flex-row gap-5 items-center">
                 <a href="{{ route('login') }}"
                     class="text-black font-bold rounded-lg px-4 py-2 text-center hover:text-base-red">
                     Masuk
