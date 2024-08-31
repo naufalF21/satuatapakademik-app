@@ -68,21 +68,13 @@
                     <div id="dropdownNavbar"
                         class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
                         <ul class="py-2 text-sm" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="/programs/movie" class="block px-4 py-2 hover:bg-gray-100 ">Kelas Film</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Kelas IT</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Kelas Motion Graphic</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Kelas Content Creator </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Kelas Broadcasting</a>
-                            </li>
+                            @foreach ($categories as $category)
+                                <li>
+                                    <a href="programs/{{ $category->slug }}" class="block px-4 py-2 hover:bg-gray-100 ">
+                                        {{ $category->name }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                         <div class="py-1">
                             <a href="/programs" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">All
