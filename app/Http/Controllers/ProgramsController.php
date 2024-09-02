@@ -33,9 +33,12 @@ class ProgramsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $program)
     {
-        //
+        $data = [
+            'slug' => $program
+        ];
+        return view('pages.programs.detail', $data);
     }
 
     /**

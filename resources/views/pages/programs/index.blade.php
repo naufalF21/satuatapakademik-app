@@ -35,7 +35,7 @@
                         membantu kamu untuk
                         mendalami skill yang dibutuhkan oleh profesi Content Creator. Program-program yang tersedia antara
                         lain: Creator Camp, Video Production Mastery, dan lain sebagainya.</p>
-                    <x-ui.link-button :href="route('program.movies')">Learn More</x-ui.link-button>
+                    <x-ui.link-button href="programs/kelas-film">Learn More</x-ui.link-button>
                 </li>
 
             </ul>
