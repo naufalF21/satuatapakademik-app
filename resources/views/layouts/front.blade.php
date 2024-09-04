@@ -13,9 +13,9 @@
     {{-- end wa floating icon --}}
     <div class="flex flex-col text-base">
         @include('includes.navbar')
-        <div>
+        <main>
             @yield('content')
-        </div>
+        </main>
         @include('includes.footer')
     </div>
 

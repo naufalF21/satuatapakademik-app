@@ -28,7 +28,7 @@
     </div>
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="{{ url('/images/logo.png') }}" class="h-16" alt="Flowbite Logo" />
+            <img src="{{ url('/images/logo.png') }}" class="h-16" alt="Logo" />
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div class="hidden md:flex flex-row gap-5 items-center">
