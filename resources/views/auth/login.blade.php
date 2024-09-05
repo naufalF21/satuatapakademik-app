@@ -112,7 +112,7 @@
                 <div class="flex flex-col gap-4">
                     <button type="submit"
                         class="text-base-white bg-base-red font-bold rounded-xl px-6 py-3 text-center hover:bg-base-black hover:text-base-white focus:ring-4 focus:outline-none focus:ring-gray-400 w-full">Masuk</button>
-                    <button type="button"
+                    <a href="{{ route('oauth.google') }}"
                         class="text-base-black border-2 bg-white font-bold rounded-xl px-6 py-3 text-center hover:bg-base-black hover:text-base-white focus:ring-4 focus:outline-none focus:ring-gray-400 w-full flex flex-row items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 48 48">
                             <path fill="#ffc107"
@@ -125,7 +125,7 @@
                                 d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917" />
                         </svg>
                         Masuk
-                        dengan Akun Google</button>
+                        dengan Akun Google</a>
                 </div>
 
                 <div class="flex flex-row items-center justify-center">

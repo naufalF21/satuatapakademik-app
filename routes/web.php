@@ -14,7 +14,6 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/student', [StudentController::class, 'index'])->name('student');
 Route::get('/programs', [ProgramsController::class, 'index'])->name('programs');
 Route::get('/programs/{program}', [ProgramsController::class, 'show']);
-// end route for pages
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,6 +30,9 @@ Route::post('/get-snap-token', [PaymentController::class, 'getSnapToken']);
 Route::get('/pay', function () {
     return view('payment');
 });
-// end midtrans routes
+
+// oauth google routes
+Route::get('/oauth/google', [\App\Http\Controllers\OauthController::class, 'redirectToProvider'])->name('oauth.google');
+Route::get('/oauth/google/callback', [\App\Http\Controllers\OauthController::class, 'handleProviderCallback'])->name('oauth.google.callback');
 
 require __DIR__ . '/auth.php';
