@@ -49,14 +49,14 @@
 
 {{-- custom login view --}}
 <x-auth-layout>
-    <div class="flex flex-row md:p-10 px-4 py-8 min-h-screen">
-        <div class="flex flex-col w-full md:p-6 md:justify-between gap-10 md:gap-0">
+    <div class="flex flex-row md:p-8 px-4 py-8 min-h-screen">
+        <div class="flex flex-col w-full md:px-6 gap-10 md:gap-6 justify-center">
             <a href="{{ route('home') }}" class="w-fit">
                 <img src="{{ url('/images/logo.png') }}" class="h-16" alt="Logo" />
             </a>
             <div class="flex flex-col gap-2">
-                <h5 class="font-semibold text-2xl">Selamat Datang</h5>
-                <p class="text-base text-justify text-gray-500">Selamat datang kembali! Akses akun Anda untuk melanjutkan
+                <h5 class="font-semibold text-xl">Selamat Datang</h5>
+                <p class="text-sm text-justify text-gray-500">Selamat datang kembali! Akses akun Anda untuk melanjutkan
                     ke
                     fitur-fitur
                     menarik yang
@@ -72,20 +72,18 @@
 
                 {{-- email --}}
                 <div>
-                    <label for="email"
-                        class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Email</label>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                     <input type="email" id="email"
-                        class="bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-base-red focus:border-base-red block w-full py-3"
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-base-red focus:border-base-red block w-full py-3"
                         placeholder="Enter your email" name="email" autofocus autocomplete="username" required />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 {{-- password --}}
                 <div>
-                    <label for="password"
-                        class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Password</label>
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                     <input type="password" id="password"
-                        class="bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-base-red focus:border-base-red block w-full py-3"
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-base-red focus:border-base-red block w-full py-3"
                         placeholder="Enter your password" name="password" autocomplete="current-password" required />
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
@@ -97,11 +95,11 @@
                             <input id="remember" type="checkbox" value=""
                                 class="w-4 h-4 border border-gray-300 rounded bg-white focus:ring-3 focus:ring-blue-300" />
                         </div>
-                        <label for="remember" class="ms-2 text-base font-medium text-gray-900">Remember
+                        <label for="remember" class="ms-2 text-sm font-medium text-gray-900">Remember
                             me</label>
                     </div>
                     @if (Route::has('password.request'))
-                        <a class="underline text-base text-gray-600 hover:text-base-red"
+                        <a class="underline text-sm text-gray-600 hover:text-base-red"
                             href="{{ route('password.request') }}">
                             {{ __('Lupa password?') }}
                         </a>
@@ -109,7 +107,7 @@
                 </div>
 
                 {{-- buttons --}}
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-3 text-sm">
                     <button type="submit"
                         class="text-base-white bg-base-red font-bold rounded-xl px-6 py-3 text-center hover:bg-base-black hover:text-base-white focus:ring-4 focus:outline-none focus:ring-gray-400 w-full">Masuk</button>
                     <a href="{{ route('oauth.google') }}"
@@ -128,7 +126,7 @@
                         dengan Akun Google</a>
                 </div>
 
-                <div class="flex flex-row items-center justify-center">
+                <div class="flex flex-row items-center justify-center text-sm">
                     <p class="text-gray-400">Belum punya Akun? <a href="{{ route('register') }}"
                             class="text-base-red font-semibold">Daftar
                             Sekarang</a></p>
