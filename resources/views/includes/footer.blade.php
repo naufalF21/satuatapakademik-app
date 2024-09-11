@@ -7,11 +7,15 @@
         </div>
         <ul class="w-full md:flex flex-col gap-5 hidden">
             <li class="text-lg font-semibold">Our Program Categories</li>
-            <li><a href="/programs/movie" class="hover:text-base-red">Film Class</a></li>
-            <li>IT Class</li>
-            <li>Motion Graphic</li>
-            <li>Content Creator Class</li>
-            <li>Broadcasting Class</li>
+            @foreach ($programs as $program)
+                <li>
+                    @if ($program->is_active)
+                        <a href="/programs/{{ $program->slug }}" class="hover:text-base-red">{{ $program->name }}</a>
+                    @else
+                        <a href="#" class="hover:text-base-red">{{ $program->name }}</a>
+                    @endif
+                </li>
+            @endforeach
         </ul>
         <ul class="w-full md:flex flex-col gap-5 hidden">
             <li class="text-lg font-semibold">Explore</li>
@@ -23,11 +27,16 @@
         <div class="md:hidden flex flex-row justify-between w-full">
             <ul class="flex flex-col gap-5">
                 <li class="text-lg font-semibold">Our Program Categories</li>
-                <li><a href="/programs/movie" class="hover:text-base-red">Film Class</a></li>
-                <li>IT Class</li>
-                <li>Motion Graphic</li>
-                <li>Content Creator Class</li>
-                <li>Broadcasting Class</li>
+                @foreach ($programs as $program)
+                    <li>
+                        @if ($program->is_active)
+                            <a href="/programs/{{ $program->slug }}"
+                                class="hover:text-base-red">{{ $program->name }}</a>
+                        @else
+                            <a href="#" class="hover:text-base-red">{{ $program->name }}</a>
+                        @endif
+                    </li>
+                @endforeach
             </ul>
             <ul class="flex flex-col gap-5">
                 <li class="text-lg font-semibold">Explore</li>

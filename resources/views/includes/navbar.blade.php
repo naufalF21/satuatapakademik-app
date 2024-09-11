@@ -74,12 +74,11 @@
                                 <li>
                                     @if ($program->is_active)
                                         <a href="/programs/{{ $program->slug }}"
-                                            class="block px-4 py-2 hover:bg-gray-100">
-                                        @else
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            class="block px-4 py-2 hover:bg-gray-100">{{ $program->name }}</a>
+                                    @else
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100">{{ $program->name }}</a>
                                     @endif
-                                    {{ $program->name }}
-                                    </a>
                                 </li>
                             @endforeach
                         </ul>

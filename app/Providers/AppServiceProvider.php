@@ -22,10 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // view()->composer('includes.navbar', function ($view) {
-        //     $categories = Category::all();
-        //     $view->with('categories', $categories);
-        // });
+        view()->composer('includes.footer', function ($view) {
+            $programs = Program::all();
+            $view->with('programs', $programs);
+        });
 
         view()->composer('includes.navbar', function ($view) {
             $programs = Program::all();
