@@ -63,15 +63,22 @@
                             fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
-                        </svg></button>
+                        </svg>
+                    </button>
+
                     <!-- Dropdown menu -->
                     <div id="dropdownNavbar"
                         class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
                         <ul class="py-2 text-sm" aria-labelledby="dropdownLargeButton">
-                            @foreach ($categories as $category)
+                            @foreach ($programs as $program)
                                 <li>
-                                    <a href="programs/{{ $category->slug }}" class="block px-4 py-2 hover:bg-gray-100 ">
-                                        {{ $category->name }}
+                                    @if ($program->is_active)
+                                        <a href="/programs/{{ $program->slug }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">
+                                        @else
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                    @endif
+                                    {{ $program->name }}
                                     </a>
                                 </li>
                             @endforeach

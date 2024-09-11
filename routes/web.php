@@ -13,7 +13,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/student', [StudentController::class, 'index'])->name('student');
 Route::get('/programs', [ProgramsController::class, 'index'])->name('programs');
-Route::get('/programs/{program}', [ProgramsController::class, 'show']);
+Route::get('/programs/{slug}', [ProgramsController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

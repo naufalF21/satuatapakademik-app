@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class ProgramsController extends Controller
@@ -11,7 +12,11 @@ class ProgramsController extends Controller
      */
     public function index()
     {
-        return view('pages.programs.index');
+        $data = [
+            'programs' => Program::all()
+        ];
+
+        return view('pages.programs.index', $data);
     }
 
     /**
@@ -33,11 +38,12 @@ class ProgramsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $program)
+    public function show(string $slug)
     {
         $data = [
-            'slug' => $program
+            'program' => Program::where('slug', $slug)->first()
         ];
+
         return view('pages.programs.detail', $data);
     }
 

@@ -4,16 +4,15 @@
     <div class="container flex flex-row py-7 md:py-14 gap-20">
         <div class="flex flex-col w-full gap-5">
             <span class="text-base-red">#SatuAtapAkademik</span>
-            <h1 class="text-4xl md:text-5xl">Solusi Terbaik untuk
-                Freelance Videografi
-                Pemula</h1>
+            <h1 class="text-4xl md:text-5xl">{{ $program->title }}</h1>
             <p class="text-lg">
-                Mulai Perjalananmu Sebagai Leader Bersama SATU ATAP AKADEMIK
+                Kelas online kami menawarkan pengalaman belajar fleksibel untuk semua tingkat, dengan topik beragam dan
+                akses materi kapan saja dan di mana saja.
             </p>
             <x-ui.link-button :href="route('register')">Join Now</x-ui.link-button>
         </div>
         <div class="hidden md:flex w-full">
-            <img src="{{ url('/images/satu-film.png') }}" class="rounded-xl" alt="Hero Image" />
+            <img src="{{ Storage::url($program->image) }}" class="rounded-xl" alt="Hero Image" />
         </div>
     </div>
     {{-- end hero section --}}
