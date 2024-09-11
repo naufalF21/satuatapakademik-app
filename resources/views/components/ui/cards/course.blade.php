@@ -1,10 +1,10 @@
 @props(['title', 'rating', 'hours', 'modules'])
 
-<div class="bg-white rounded-xl">
+<div class="bg-white rounded-xl flex flex-col">
     <a href="/programs/movie/1">
         <img class="rounded-t-lg" src="{{ url('/images/card-image.jpg') }}" alt="card image" />
     </a>
-    <div class="p-5 flex flex-col gap-4">
+    <div class="p-5 flex flex-col gap-4 justify-between h-full">
         <span class="text-xl font-semibold">{{ $title }}</span>
         <div class="flex flex-row gap-2">
             <img src="{{ url('/icons/stars.svg') }}" />
