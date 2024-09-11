@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Support;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('includes.navbar', function ($view) {
             $categories = Category::all();
             $view->with('categories', $categories);
+        });
+
+        view()->composer('includes.support', function ($view) {
+            $supports = Support::all();
+            $view->with('supports', $supports);
         });
     }
 }
