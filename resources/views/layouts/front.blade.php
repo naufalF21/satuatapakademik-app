@@ -19,6 +19,7 @@
         @include('includes.footer')
     </div>
 
+    @stack('scripts')
 </body>
 
 </html>

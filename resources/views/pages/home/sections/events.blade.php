@@ -1,23 +1,43 @@
 <div class="container flex flex-col py-14 w-full gap-5">
     <h2 class="text-4xl font-semibold">Events <span class="text-base-red">Satu Atap Akademik</span></h2>
-    <div class="hidden md:grid grid-cols-3 w-full gap-10">
-        <x-ui.cards.event image="poster.jpg"
-            link="https://l.instagram.com/?u=https%3A%2F%2Fbit.ly%2Fjoinsineasmuda2024&e=AT0pwSIXr-UeM4LZmosvLk9C9oE8b_-u5FcDtfAyBwjhcx-eeCTY4dmZv1PuDcYYetkKRIQfFfFrmzSCYrk8BAF9BXugzPEte08rVg" />
-        <x-ui.cards.event image="modul.png" link="https://www.instagram.com/p/C-BUfBtSFeh/" />
-        <x-ui.cards.event image="action.png" link="#" />
-    </div>
-    <div class="md:hidden">
-        <swiper-container slides-per-view="1" speed="200" loop="true" autoplay="true">
-            <li class="swiper-slide w-full">
-                <x-ui.cards.event image="poster.jpg"
-                    link="https://l.instagram.com/?u=https%3A%2F%2Fbit.ly%2Fjoinsineasmuda2024&e=AT0pwSIXr-UeM4LZmosvLk9C9oE8b_-u5FcDtfAyBwjhcx-eeCTY4dmZv1PuDcYYetkKRIQfFfFrmzSCYrk8BAF9BXugzPEte08rVg" />
-            </li>
-            <li class="swiper-slide w-full">
-                <x-ui.cards.event image="modul.png" link="https://www.instagram.com/p/C-BUfBtSFeh/" />
-            </li>
-            <li class="swiper-slide w-full">
-                <x-ui.cards.event image="action.png" link="#" />
-            </li>
+    <div class="block">
+        <swiper-container>
+            @foreach ($events as $event)
+                <li class="swiper-slide">
+                    <x-ui.cards.event image="{{ $event->image }}" link="{{ $event->link }}" />
+                </li>
+            @endforeach
         </swiper-container>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        // swiper element
+        const swiperEl = document.querySelector('swiper-container');
+
+        // swiper parameters
+        const swiperParams = {
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 4,
+                },
+            },
+            speed: 200,
+            loop: true,
+            autoplay: true
+        };
+
+        // now we need to assign all parameters to Swiper element
+        Object.assign(swiperEl, swiperParams);
+
+        // and now initialize it
+        swiperEl.initialize();
+    </script>
+@endpush
