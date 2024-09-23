@@ -58,7 +58,8 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 'Course',
                 'Testimonial',
-                'Others',
+                'Miscellaneous',
+                'Settings',
             ]);
     }
 }

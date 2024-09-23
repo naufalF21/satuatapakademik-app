@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Program;
+use App\Models\SiteInformation;
+use App\Models\SocialMedia;
 use App\Models\Support;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,13 +25,35 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('includes.footer', function ($view) {
-            $programs = Program::all();
-            $view->with('programs', $programs);
+            $data = [
+                'programs' => Program::all(),
+                'instagram' => SocialMedia::where('name', 'Instagram')->first(),
+                'youtube' => SocialMedia::where('name', 'Youtube')->first(),
+                'tiktok' => SocialMedia::where('name', 'Tiktok')->first(),
+                'siteInfo' => SiteInformation::all()->first()
+            ];
+
+            $view->with('data', $data);
         });
 
         view()->composer('includes.navbar', function ($view) {
-            $programs = Program::all();
-            $view->with('programs', $programs);
+            $data = [
+                'programs' => Program::all(),
+                'instagram' => SocialMedia::where('name', 'Instagram')->first(),
+                'youtube' => SocialMedia::where('name', 'Youtube')->first(),
+                'tiktok' => SocialMedia::where('name', 'Tiktok')->first(),
+                'siteInfo' => SiteInformation::all()->first()
+            ];
+
+            $view->with('data', $data);
+        });
+
+        view()->composer('layouts.front', function ($view) {
+            $data = [
+                'whatsapp' => SocialMedia::where('name', 'WhatsApp')->first(),
+            ];
+
+            $view->with('data', $data);
         });
 
         view()->composer('includes.support', function ($view) {
