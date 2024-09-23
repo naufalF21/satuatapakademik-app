@@ -7,7 +7,7 @@
             Satu Atap Akademik
         </p>
     </div>
-    <div class="flex w-full h-[250px] md:h-full">
+    <div class="flex w-full h-[250px] md:h-auto">
         @if ($favoriteVideo)
             <iframe class="w-full h-full rounded-xl" src="{{ $favoriteVideo->link }}" frameborder="0"
                 allowfullscreen></iframe>
