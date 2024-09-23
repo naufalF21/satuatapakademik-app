@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TestimonialComment;
+use App\Models\TestimonialVideo;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -11,7 +13,13 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('pages.student.index');
+        $data = [
+            'favoriteVideo' => TestimonialVideo::where('is_favorite', true)->first(),
+            'unfavoriteVideo' => TestimonialVideo::where('is_favorite', false)->get(),
+            'users' => TestimonialComment::all()
+        ];
+
+        return view('pages.student.index', $data);
     }
 
     /**

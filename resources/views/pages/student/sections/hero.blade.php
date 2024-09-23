@@ -8,8 +8,12 @@
         </p>
     </div>
     <div class="hidden md:flex w-full">
-        {{-- <img src="{{ url('/images/hero-image.jpg') }}" class="rounded-xl" alt="Hero Image" /> --}}
-        <iframe class="w-full h-full rounded-xl" src="//www.youtube.com/embed/3n7vr3x9o6Y" frameborder="0"
-            allowfullscreen></iframe>
+        @if ($favoriteVideo)
+            <iframe class="w-full h-full rounded-xl" src="{{ $favoriteVideo->link }}" frameborder="0"
+                allowfullscreen></iframe>
+        @else
+            <img src="{{ url('/images/hero-image.jpg') }}" class="rounded-xl" alt="Hero Image" />
+        @endif
+
     </div>
 </div>

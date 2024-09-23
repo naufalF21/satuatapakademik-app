@@ -6,23 +6,21 @@
         </div>
         <div class="hidden md:block">
             <swiper-container slides-per-view="3" speed="200" loop="true" autoplay="true" space-between="48">
-                <li class="swiper-slide"><x-ui.cards.testimonial /></li>
-                <li class="swiper-slide"><x-ui.cards.testimonial /></li>
-                <li class="swiper-slide"><x-ui.cards.testimonial /></li>
-                <li class="swiper-slide"><x-ui.cards.testimonial /></li>
-                <li class="swiper-slide"><x-ui.cards.testimonial /></li>
-                <li class="swiper-slide"><x-ui.cards.testimonial /></li>
+                @foreach ($users as $user)
+                    <li class="swiper-slide"><x-ui.cards.testimonial :avatar="$user->avatar" :name="$user->name"
+                            :comment="$user->comments" :occupation="$user->occupation" /></li>
+                @endforeach
             </swiper-container>
         </div>
         <div class="md:hidden">
-            <swiper-container slides-per-view="1" speed="200" loop="true" autoplay="true" space-between="48">
+            {{-- <swiper-container slides-per-view="1" speed="200" loop="true" autoplay="true" space-between="48">
                 <li class="swiper-slide"><x-ui.cards.testimonial /></li>
                 <li class="swiper-slide"><x-ui.cards.testimonial /></li>
                 <li class="swiper-slide"><x-ui.cards.testimonial /></li>
                 <li class="swiper-slide"><x-ui.cards.testimonial /></li>
                 <li class="swiper-slide"><x-ui.cards.testimonial /></li>
                 <li class="swiper-slide"><x-ui.cards.testimonial /></li>
-            </swiper-container>
+            </swiper-container> --}}
         </div>
     </div>
 </section>
