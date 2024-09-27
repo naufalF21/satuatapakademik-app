@@ -1,8 +1,8 @@
-@props(['title', 'rating', 'hours', 'modules'])
+@props(['title', 'rating', 'hours', 'modules', 'image'])
 
 <div class="bg-white rounded-xl flex flex-col">
-    <a href="/programs/movie/1">
-        <img class="rounded-t-lg" src="{{ url('/images/card-image.jpg') }}" alt="card image" />
+    <a href="#">
+        <img class="rounded-t-lg object-cover object-center h-60 w-full" src="{{ url($image) }}" alt="card image" />
     </a>
     <div class="p-5 flex flex-col gap-4 justify-between h-full">
         <span class="text-xl font-semibold">{{ $title }}</span>

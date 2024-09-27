@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -14,6 +15,7 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/student', [StudentController::class, 'index'])->name('student');
 Route::get('/programs', [ProgramsController::class, 'index'])->name('programs');
 Route::get('/programs/{slug}', [ProgramsController::class, 'show']);
+Route::get('/articles', [ArticlesController::class, 'index'])->name('articles');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
