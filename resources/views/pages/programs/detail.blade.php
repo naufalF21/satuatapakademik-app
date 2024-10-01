@@ -64,9 +64,12 @@
             </div>
         </div>
         <div class="grid md:grid-cols-3 w-full gap-10">
-            <x-ui.cards.course title="Cinemas Class" rating="4.4" hours="12" modules="24" />
-            <x-ui.cards.course title="Cinemas Class" rating="4.4" hours="12" modules="24" />
-            <x-ui.cards.course title="Cinemas Class" rating="4.4" hours="12" modules="24" />
+            <x-ui.cards.course title="Cinemas Class" rating="4.4" hours="12" modules="24"
+                image="images/class-popular/Film.jpg" />
+            <x-ui.cards.course title="Cinemas Class" rating="4.4" hours="12" modules="24"
+                image="images/class-popular/Film.jpg" />
+            <x-ui.cards.course title="Cinemas Class" rating="4.4" hours="12" modules="24"
+                image="images/class-popular/Film.jpg" />
         </div>
     </section>
     {{-- end courses --}}
