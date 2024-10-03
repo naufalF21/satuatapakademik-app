@@ -30,6 +30,11 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
     public function scopePublished($query)
     {
         $query->where('published_at', '<=', Carbon::now());

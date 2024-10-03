@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
+use Carbon\Carbon;
 use App\Models\Program;
 use App\Models\SiteInformation;
 use App\Models\SocialMedia;
@@ -60,5 +60,10 @@ class AppServiceProvider extends ServiceProvider
             $supports = Support::all();
             $view->with('supports', $supports);
         });
+
+        // timezone
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+        date_default_timezone_set('Asia/Jakarta');
     }
 }
