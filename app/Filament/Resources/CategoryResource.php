@@ -10,8 +10,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
+
 
 class CategoryResource extends Resource
 {
@@ -26,11 +26,19 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
+                    ->required()->minLength(1)->maxLength(150)
+                    ->debounce()
+                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                        if ($operation === 'edit') {
+                            return;
+                        }
+
+                        $set('slug', Str::slug($state));
+                    }),
                 Forms\Components\TextInput::make('slug')
                     ->required()
-                    ->maxLength(255),
+                    ->minLength(1)
+                    ->unique(ignoreRecord: true)->maxLength(150),
             ]);
     }
 

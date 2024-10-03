@@ -30,7 +30,7 @@ class PostResource extends Resource
                 Section::make('Main Content')->schema(
                     [
                         Forms\Components\TextInput::make('title')
-                            ->live()
+                            ->debounce()
                             ->required()->minLength(1)->maxLength(150)
                             ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
                                 if ($operation === 'edit') {
@@ -39,7 +39,11 @@ class PostResource extends Resource
 
                                 $set('slug', Str::slug($state));
                             }),
-                        Forms\Components\TextInput::make('slug')->required()->minLength(1)->unique(ignoreRecord: true)->maxLength(150),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->minLength(1)
+                            ->unique(ignoreRecord: true)
+                            ->maxLength(150),
                         Forms\Components\RichEditor::make('body')
                             ->required()
                             ->fileAttachmentsDirectory('posts/images')
