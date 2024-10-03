@@ -28,7 +28,7 @@
                             <div>Halo,
                                 {{ Auth::user()->name }}
                                 @if (auth()->user()->avatar)
-                                    <img src="{{ auth()->user()->avatar }}" alt="avatar"
+                                    <img src="{{ auth()->user()->getAvatarUrlAttribute() }}" alt="avatar"
                                         class="h-9 w-9 ml-2 inline rounded-full object-cover" />
                                 @endif
                             </div>

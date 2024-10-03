@@ -5,19 +5,18 @@
                 <button class="gray-500 text-xs mr-3" wire:click="clearFilters()">X</button>
             @endif
             @if ($this->activeCategory)
-                All Posts From :
                 <x-badge wire:navigate href="{{ route('articles', ['category' => $this->activeCategory->slug]) }}">
                     {{ $this->activeCategory->title }}
                 </x-badge>
             @endif
             @if ($search)
-                <span class="ml-3">Searching : {{ $search }}</span>
+                <span class="ml-3">Searching : <strong>{{ $search }}</strong></span>
             @endif
         </div>
         <div class="flex items-center space-x-4 font-light ">
             <button class="{{ $sort === 'desc' ? 'text-gray-900 border-b border-gray-700' : 'text-gray-500' }} py-4"
                 wire:click="setSort('desc')">Latest</button>
-            <button class="{{ $sort === 'asc' ? 'text-gray-900 border-b border-gray-700' : 'text-gray-500' }} py-4"
+            <button class="{{ $sort === 'asc' ? 'text-gray-900 border-b border-gray-700' : 'text-gray-500' }} py-4 "
                 wire:click="setSort('asc')">Oldest</button>
         </div>
     </div>
@@ -28,6 +27,6 @@
     </div>
 
     <div class="my-3">
-        <div>{{ $this->posts->links() }}</div>
+        <div>{{ $this->posts->onEachSide(1)->links() }}</div>
     </div>
 </div>

@@ -55,8 +55,9 @@
                                     Halo,
                                     {{ Auth::user()->name }}
                                     @if (auth()->user()->avatar)
-                                        <img src="{{ auth()->user()->avatar }}" alt="avatar" width="45"
-                                            height="45" class="ml-2 inline rounded-full object-cover" />
+                                        <img src="{{ auth()->user()->getAvatarUrlAttribute() }}" alt="avatar"
+                                            width="45" height="45"
+                                            class="ml-2 inline rounded-full object-cover" />
                                     @endif
                                 </div>
                             </button>
@@ -100,8 +101,8 @@
                                 class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                 <div>
                                     @if (auth()->user()->avatar)
-                                        <img src="{{ auth()->user()->avatar }}" alt="avatar" width="45"
-                                            height="45" class="inline rounded-full object-cover" />
+                                        <img src="{{ auth()->user()->getAvatarUrlAttribute() }}" alt="avatar"
+                                            width="45" height="45" class="inline rounded-full object-cover" />
                                     @else
                                         {{ Auth::user()->name }}
                                     @endif

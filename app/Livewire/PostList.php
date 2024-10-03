@@ -14,13 +14,13 @@ class PostList extends Component
 {
     use WithPagination;
 
-    #[Url]
+    #[Url()]
     public $sort = 'desc';
 
-    #[Url]
+    #[Url()]
     public $search = '';
 
-    #[Url]
+    #[Url()]
     public $category = '';
 
     public function setSort($sort)
@@ -52,7 +52,7 @@ class PostList extends Component
             })
             ->search($this->search)
             ->orderBy('published_at', $this->sort)
-            ->paginate(5);
+            ->paginate(3);
     }
 
     #[Computed()]

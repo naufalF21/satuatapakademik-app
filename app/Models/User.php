@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Filament\Panel;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -51,6 +52,27 @@ class User extends Authenticatable implements FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class, 'post_like')->withTimestamps();
+    }
+
+    public function hasLiked(Post $post)
+    {
+        return $this->likes()->where('post_id', $post->id)->exists();
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
+            // Jika avatar adalah URL penuh (misalnya dari Google)
+            return $this->avatar;
+        }
+
+        // Jika avatar adalah path relatif, buat URL dari Storage
+        return $this->avatar ? Storage::url($this->avatar) : null;
     }
 
     // Authorizing access to the panel
