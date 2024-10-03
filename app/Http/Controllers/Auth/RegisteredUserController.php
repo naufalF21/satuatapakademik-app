@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Laravolt\Avatar\Avatar;
 
 class RegisteredUserController extends Controller
 {
@@ -37,18 +38,13 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // proses upload file foto avatar
-        if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-        } else {
-            $avatarPath = 'images/avatar-default.png';
-        }
+        $avatar = new Avatar();
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             // 'occupation' => $request->occupation,
-            // 'avatar' => $request->avatarPath,
+            'avatar' => $avatar->create($request->name)->toGravatar(['d' => 'retro']),
             'password' => Hash::make($request->password),
         ]);
 

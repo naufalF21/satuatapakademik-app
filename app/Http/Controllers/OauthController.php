@@ -28,11 +28,13 @@ class OauthController extends Controller
                 return redirect('/dashboard');
             } else {
                 $newUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
                     'gauth_id' => $user->id,
                     'gauth_type' => 'google',
-                    'password' => encrypt('admin@123')
+                    'name' => $user->name,
+                    'password' => encrypt('admin@123'),
+                    'email' => $user->email,
+                    'email_verified_at' => now(),
+                    'avatar' => $user->getAvatar()
                 ]);
 
                 $newUser->assignRole('student');

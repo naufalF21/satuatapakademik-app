@@ -26,29 +26,120 @@
             </li>
         </ul>
     </div>
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="bg-white md:bg-base-white max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+        {{-- hamburger menu --}}
+        <button data-collapse-toggle="navbar-dropdown" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 bg-base-white"
+            aria-controls="navbar-dropdown" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+        {{-- end hamburger menu --}}
+
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ Storage::url($data['siteInfo']->logo) }}" class="h-16" alt="Logo" />
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div class="hidden md:flex flex-row gap-5 items-center">
-                <a href="{{ route('login') }}"
-                    class="text-black font-bold rounded-lg px-4 py-2 text-center hover:text-base-red">
-                    Masuk
-                </a>
-                <x-ui.link-button :href="route('register')">Daftar</x-ui.link-button>
+                @if (auth()->check())
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                <div>
+                                    Halo,
+                                    {{ Auth::user()->name }}
+                                    @if (auth()->user()->avatar)
+                                        <img src="{{ auth()->user()->avatar }}" alt="avatar" width="45"
+                                            height="45" class="ml-2 inline rounded-full object-cover" />
+                                    @endif
+                                </div>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            @hasrole('student|mentor')
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('profile.edit')">
+                                    {{ __('Profile') }}
+                                </x-dropdown-link>
+                            @endhasrole
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="text-black font-bold rounded-lg px-4 py-2 text-center hover:text-base-red">
+                        Masuk
+                    </a>
+                    <x-ui.link-button :href="route('register')">Daftar</x-ui.link-button>
+                @endif
             </div>
-            <button data-collapse-toggle="navbar-dropdown" type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
-                aria-controls="navbar-dropdown" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M1 1h15M1 7h15M1 13h15" />
-                </svg>
-            </button>
+            <div class="md:hidden">
+                @if (auth()->check())
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                <div>
+                                    @if (auth()->user()->avatar)
+                                        <img src="{{ auth()->user()->avatar }}" alt="avatar" width="45"
+                                            height="45" class="inline rounded-full object-cover" />
+                                    @else
+                                        {{ Auth::user()->name }}
+                                    @endif
+                                </div>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            @hasrole('student|mentor')
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('profile.edit')">
+                                    {{ __('Profile') }}
+                                </x-dropdown-link>
+                            @endhasrole
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="text-base-black font-bold rounded-lg px-4 py-3 text-center hover:text-base-red w-fit bg-base-white">
+                        Masuk
+                    </a>
+                @endif
+            </div>
         </div>
+
         <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
             <ul
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-base-text-base-white">
@@ -100,13 +191,6 @@
                     <a href="/about"
                         class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-base-red md:p-0 {{ request()->routeIs('about') ? 'font-semibold text-base-red' : '' }}">About
                         Us</a>
-                </li>
-                <li class="flex flex-row justify-between md:hidden">
-                    <a href="{{ route('login') }}"
-                        class="text-black font-bold rounded-lg px-4 py-2 text-center hover:text-base-red">
-                        Masuk
-                    </a>
-                    <x-ui.link-button :href="route('register')">Daftar</x-ui.link-button>
                 </li>
             </ul>
         </div>
