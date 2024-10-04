@@ -15,6 +15,7 @@
         "laravolt/avatar": "^6.0",
         "livewire/livewire": "^3.5",
         "midtrans/midtrans-php": "^2.5",
+        "spatie/filament-markdown-editor": "^2.0",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {

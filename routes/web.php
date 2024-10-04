@@ -16,6 +16,7 @@ Route::get('/student', [StudentController::class, 'index'])->name('student');
 Route::get('/programs', [ProgramsController::class, 'index'])->name('programs');
 Route::get('/programs/{slug}', [ProgramsController::class, 'show']);
 Route::get('/articles', [PostController::class, 'index'])->name('articles');
+Route::get('/articles/{post:slug}', [PostController::class, 'show'])->name('articles.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -2,7 +2,7 @@
 <article class="[&:not(:last-child)]: pb-10">
     <div class="article-body grid grid-cols-12 gap-3 mt-5 items-start">
         <div class="article-thumbnail col-span-4 flex items-center">
-            <a href="">
+            <a href="{{ route('articles.show', $post->slug) }}">
                 <img class="mx-auto rounded-xl object-cover w-full h-[200px] " src="{{ Storage::url($post->image) }}"
                     alt="thumbnail">
             </a>
@@ -17,7 +17,7 @@
                 <span class="text-gray-500 text-xs">. {{ $post->published_at->diffForHumans() }}</span>
             </div>
             <h2 class="text-xl font-bold text-gray-900">
-                <a href="http://127.0.0.1:8000/blog/first%20post">
+                <a href="{{ route('articles.show', $post->slug) }}">
                     {{ $post->title }}
                 </a>
             </h2>
