@@ -65,6 +65,11 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         return $this->likes()->where('post_id', $post->id)->exists();
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getAvatarUrlAttribute()
     {
         if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {

@@ -186,7 +186,7 @@
                 </li>
                 <li>
                     <a href="/articles"
-                        class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-base-red md:p-0 {{ request()->routeIs('articles') ? 'font-semibold text-base-red' : '' }}">Articles</a>
+                        class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-base-red md:p-0 {{ request()->routeIs('articles') || request()->routeIs('articles.show') ? 'font-semibold text-base-red' : '' }}">Articles</a>
                 </li>
                 <li>
                     <a href="/about"

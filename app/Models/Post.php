@@ -35,6 +35,16 @@ class Post extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'post_like')->withTimestamps();
+    }
+
     public function scopePublished($query)
     {
         $query->where('published_at', '<=', Carbon::now());
@@ -45,6 +55,12 @@ class Post extends Model
         $query->whereHas('categories', function ($query) use ($category) {
             $query->where('slug', $category);
         });
+    }
+
+    public function scopePopular($query)
+    {
+        $query->withCount('likes')
+            ->orderBy("likes_count", 'desc');
     }
 
     public function scopeSearch($query, string $search = '')
@@ -62,10 +78,5 @@ class Post extends Model
         $mins = round(str_word_count($this->body) / 250);
 
         return ($mins < 1) ? 1 : $mins;
-    }
-
-    public function likes()
-    {
-        return $this->belongsToMany(User::class, 'post_like')->withTimestamps();
     }
 }
