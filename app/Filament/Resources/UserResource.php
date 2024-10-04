@@ -33,19 +33,24 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('occupation')
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('avatar')
+                    ->imageEditor()
                     ->avatar(),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255),
-
                 Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
+                    ->revealable()
                     ->dehydrateStateUsing(fn($state) => Hash::make($state))
                     ->dehydrated(fn($state) => filled($state))
                     ->required(fn(string $context): bool => $context === 'create')
                     ->maxLength(255),
+                Forms\Components\Select::make('roles')
+                    ->preload()
+                    ->multiple()
+                    ->relationship('roles', 'name')
             ]);
     }
 
@@ -64,6 +69,9 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('roles.name')
+                    ->label('Role')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()

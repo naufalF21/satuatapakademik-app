@@ -1,4 +1,4 @@
-<div class="pt-10 mt-10 border-t border-gray-100 comments-box">
+<div class="pt-10 mt-10 border-t border-gray-300 comments-box">
     <h2 class="mb-5 text-2xl font-semibold text-gray-900">Discussions</h2>
     @auth
         <textarea wire:model="comment"
@@ -13,7 +13,7 @@
     @endauth
     <div class="px-3 py-2 mt-5 user-comments">
         @forelse($this->comments as $comment)
-            <div class="comment [&:not(:last-child)]:border-b border-gray-100 py-5">
+            <div class="comment [&:not(:last-child)]:border-b border-gray-300 py-5">
                 <div class="flex items-center mb-4 text-sm user-meta">
                     <x-posts.author :author="$comment->user" size="sm" />
                     <span class="text-gray-500">. {{ $comment->created_at->diffForHumans() }}</span>

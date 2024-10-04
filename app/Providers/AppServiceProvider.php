@@ -2,28 +2,33 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Carbon\Carbon;
 use App\Models\Program;
 use App\Models\SiteInformation;
 use App\Models\SocialMedia;
 use App\Models\Support;
 use Illuminate\Support\ServiceProvider;
+use App\Policies\RolePolicy;
+use App\Policies\PermissionPolicy;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void
-    {
-        //
-    }
+    public function register(): void {}
 
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
+        Gate::policy(Role::class, RolePolicy::class);
+        Gate::policy(Permission::class, PermissionPolicy::class);
+
         view()->composer('includes.footer', function ($view) {
             $data = [
                 'programs' => Program::all(),
