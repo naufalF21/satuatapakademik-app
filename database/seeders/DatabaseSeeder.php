@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory(50)->create();
+        Post::factory(10)->create();
         Category::factory(5)->create();
         // $this->call(RolePermissionSeeder::class);
     }
