@@ -25,10 +25,7 @@
             <div class="flex items-center">
                 <livewire:like-button :key="'like-' . $post->id" :$post />
             </div>
-            <div>
-                <div class="flex items-center">
-                </div>
-            </div>
+            <x-social-share :$post />
         </div>
 
         <div class="py-3 text-lg prose text-justify text-gray-800 article-content">
