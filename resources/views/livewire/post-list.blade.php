@@ -1,5 +1,5 @@
 <div class="py-6">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between md:items-center flex-col md:flex-row">
         <div class="text-gray-600">
             @if ($this->activeCategory || $search)
                 <button class="gray-500 text-xs mr-3" wire:click="clearFilters()">X</button>

@@ -1,14 +1,14 @@
 @props(['post'])
 <article class="[&:not(:last-child)]: pb-10">
-    <div class="article-body grid grid-cols-12 gap-3 mt-5 items-start">
-        <div class="article-thumbnail col-span-4 flex items-center">
+    <div class="article-body md:grid md:grid-cols-12 gap-3 mt-5 items-start flex-col">
+        <div class="article-thumbnail md:col-span-4 flex items-center">
             <a href="{{ route('articles.show', $post->slug) }}">
                 <img class="mx-auto rounded-xl object-cover w-full h-[200px] " src="{{ Storage::url($post->image) }}"
                     alt="thumbnail">
             </a>
         </div>
-        <div class="col-span-8">
-            <div class="article-meta flex py-1 text-sm items-center">
+        <div class="md:col-span-8">
+            <div class="article-meta flex md:py-1 py-2 text-sm items-center">
                 @if ($post->author->avatar)
                     <img class="w-7 h-7 rounded-full mr-3 object-cover"
                         src="{{ $post->author->getAvatarUrlAttribute() }}" alt="avatar">

@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('content')
-    <article class="w-full col-span-4 py-5 mx-auto mt-10 md:col-span-3" style="max-width:700px">
+    <article class="w-full col-span-4 py-5 mx-auto mt-10 md:col-span-3 px-3 md:px-0" style="max-width:700px">
         <img class="w-full my-2 rounded-lg" src="{{ Storage::url($post->image) }}" alt="thumbnail">
         <h1 class="text-4xl font-bold text-left text-gray-800">
             {{ $post->title }}
@@ -8,10 +8,10 @@
         <div class="flex items-center justify-between mt-2">
             <div class="flex items-center py-5">
                 <x-posts.author :author="$post->author" size="md" />
-                <span class="text-sm text-gray-500">| {{ $post->getReadingTime() }} min read</span>
+                <span class="text-sm text-gray-500 hidden md:block">| {{ $post->getReadingTime() }} min read</span>
             </div>
-            <div class="flex items-center">
-                <span class="mr-2 text-gray-500">{{ $post->published_at->diffForHumans() }}</span>
+            <div class="flex items-center flex-row gap-2">
+                <span class="text-gray-500">{{ $post->published_at->diffForHumans() }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3"
                     stroke="currentColor" class="w-5 h-5 text-gray-500">
                     <path stroke-linecap="round" stroke-linejoin="round"
